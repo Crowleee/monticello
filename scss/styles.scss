@@ -1,0 +1,257 @@
+@import 'normalize';
+@import 'variables';
+@import 'mixins';
+@import 'slick';
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    font-size: 10px;
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100%; 
+    @include text($text-color, $text-font)
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1170px;
+    width: 96%;
+}
+
+// HERO
+
+header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1;
+}
+
+.hero {  
+    min-height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    &__text {
+        position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-transform: uppercase;
+    }
+    &__title {
+        @include text($gray, $title-font, 8rem, 700);       
+        letter-spacing: 5px;
+        margin: 0;
+    }
+    &__subtitle {
+        letter-spacing: 6px;
+        @include text($gray, $nav-font, 1.8rem, 300);
+    }
+}
+.nav {
+    margin-top: 5%;
+    display: flex; 
+    &__logo {
+        max-width: 100%;
+    }
+    &__menu {
+        width: 60%;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        padding: 0;
+        margin: 10px 0 0 85px;     
+    }
+    &__item {
+        display: inline-block;        
+    }
+    &__link {
+        text-decoration: none;
+        text-transform: uppercase;
+        @include text($gray, $nav-font, 1.4rem, 400);
+        &::before {
+            content: '';
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            border: 1px solid $gray;
+            margin-right: 5px;
+            @include tr ();
+        }
+         &:hover:before {
+            background-color: $gray;
+        }     
+    }
+    &__socials {
+        width: 20%;
+        padding: 0;
+        margin: 10px 0 0 85px; 
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+    }
+    &__social {
+        list-style: none;
+        text-decoration: none;
+        @include text($gray, $nav-font, 1.4rem, 400);
+        display: inline-block;
+        border: 1px solid $gray;
+        border-radius: 50%;
+        padding: 8px 15px;
+        @include hover {
+            box-shadow: 0px 0px 20px $gray;
+        }
+    }
+
+}
+
+.scroll {
+	position: absolute;
+	bottom: 5%;
+    right: 48%;
+    transform: translate(-50%, -50%);
+    border: 1px solid $gray;
+    border-radius: 50%;
+    padding: 6px 16px;
+    fill: $gray;
+    @include hover {
+        box-shadow: 0px 0px 20px $gray;
+    }
+}
+
+
+.slick-dots {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translate(0, -50%);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+    & li {
+        display: block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: 1px solid $gray;
+        background-color: transparent;
+        font-size: 0;
+        padding: 0;
+        margin-bottom: 40px;
+        &:hover,
+		&:active,
+		&.slick-active {
+			background-color: $gray;
+		}
+    }
+
+    & button {
+        display: none;
+    }
+   
+}
+
+// PROJECTS
+
+.projects {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    &--right {
+        flex-direction: inherit;
+    }
+    &__caption {
+        @include text($title-color, $title-font, 4.4rem, 700);
+        text-align: center;
+        text-transform: uppercase;
+        position: relative;
+        padding: 120px 0 100px;
+		margin: 0;
+        &:before {
+            content: '';
+			display: inline-block;
+            height: 2px;
+            width: 100px;
+            background-color: $title-color;
+            position: absolute;
+            left: 47%;
+            top: 33%;
+        }
+    }
+    &__text {
+        width: 45%;
+    }
+    &__title {
+        @include text($title-color, $title-font, 4.4rem, 700, 1);
+    }
+    &__subtitle {
+        @include text($title-color, $nav-font, 2.2rem, 300, 1);
+        text-transform: uppercase;
+    }
+    &__info {
+        @include text($text-color, $nav-font, 1.8rem, 400, 1.6);
+    }
+    &__centre {
+        width: 50%;
+        position: relative;
+        order: 1;
+        &:before {
+            content: '';
+            position: absolute;
+            display: block;
+            background-color: $secondary-color;
+            width: 100%;
+            height: 100%;
+            bottom: 10%;
+            right: 45%;
+        }
+        &--right {
+            &:before {
+                background-color: $primary-color;
+                left: 45%;
+            }
+        } 
+    }
+    &__wrap {
+        padding-top: 80%;
+        position: relative;
+        overflow: hidden;
+    }
+    &__img {
+        @include posCenter;
+        width: 100%;
+        height: 100%;    
+    }
+}
+
+.btn {
+    display: inline-block;
+    @include text($text-color, $nav-font, 2.2rem, 400, 1.6);
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 1px solid $title-color;
+    padding: 18px 42px;
+    margin-bottom: 50px;
+}
+
+
+.contacts {
+    
+}
+
