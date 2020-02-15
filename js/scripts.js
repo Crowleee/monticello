@@ -1,10 +1,13 @@
-$(document).ready(() => {
-    $('.slider').slick();
+(function($) {
+  'use strict';
+
+  let myMap = null;
+
+  $('.slider').slick();
 
 
     window.initMap = function() {
-		let map;
-        	map = new google.maps.Map(document.getElementById('map'), {
+      myMap = new google.maps.Map(document.getElementById('map'), {
 	          center: {lat: 40.6561223, lng: -73.897054},
 	          zoom: 13,
             disableDefaultUI: true,
@@ -249,12 +252,12 @@ $(document).ready(() => {
         
 	var marker = new google.maps.Marker({
 	    position: {lat: 40.681647, lng: -73.903923},
-	    map: map,
+	    map: myMap,
 	    icon:'../img/pin.png'
   });
 
 }
 
-initMap();
+// initMap();
 
-});
+})(jQuery);
